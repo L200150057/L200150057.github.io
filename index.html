@@ -9,12 +9,14 @@
     </style>
   </head>
   <body>
-    <h3>My Google Maps Demo</h3>
-    <h4>Peta Dusun Watusambang</h4>
+    <div id="judul">
+      <h3>My Google Maps Demo</h3>
+      <h4>Peta Dusun Watusambang</h4>
+    </div>
     <div id="map"></div>
     <script>
       function initMap() {
-        var kelurahan = {lat: -7.655089, lng: 111.104385};
+        var kelurahan = {lat: -7.656068, lng: 111.104478};
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 16,
           center: kelurahan,
