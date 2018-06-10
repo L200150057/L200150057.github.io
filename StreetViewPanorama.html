@@ -11,8 +11,8 @@
       }
 
       .judul{
-      	width: 50%;
-      	margin: 0 auto;
+        width: 50%;
+        margin: 0 auto;
       }
 
       #map, #pano {
@@ -34,23 +34,9 @@
           zoom: 18
         });
         var panorama = new google.maps.StreetViewPanorama(
-            document.getElementById('pano'), {
-              position: watusambang,
-              pov: {
-                heading: 34,
-                pitch: 10
-              }
-            });
-        map.setStreetView(panorama);
-      }
-
-      function initPano() {
-        // Set up Street View and initially set it visible. Register the
-        // custom panorama provider function. Set the StreetView to display
-        // the custom panorama 'reception' which we check for below.
-        var panorama = new google.maps.StreetViewPanorama(
             document.getElementById('pano'), {pano: 'watusambang', visible: true});
         panorama.registerPanoProvider(getCustomPanorama);
+        map.setStreetView(panorama);
       }
 
       // Return a pano image given the panoID.
@@ -75,7 +61,7 @@
             copyright: 'Imagery (c) 2010 Google',
             // The definition of the tiles for this panorama.
             tiles: {
-              tileSize: new google.maps.Size(1024, 512),
+              tileSize: new iehfgoogle.maps.Size(1024, 512),
               worldSize: new google.maps.Size(1024, 512),
               // The heading in degrees at the origin of the panorama
               // tile set.
