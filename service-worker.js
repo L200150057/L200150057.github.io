@@ -3,6 +3,30 @@ importScripts(
 );
 
 if (workbox) {
+    workbox.precaching.precacheAndRoute([
+        { url: "/", revision: "1" },
+        { url: "/nav.html", revision: "1" },
+        { url: "/index.html", revision: "1" },
+        { url: "/pages/home.html", revision: "1" },
+        { url: "/pages/standing.html", revision: "1" },
+        { url: "/pages/match.html", revision: "1" },
+        { url: "/pages/contact.html", revision: "1" },
+        { url: "/css/materialize.min.css", revision: "1" },
+        { url: "/css/custom.css", revision: "1" },
+        { url: "/css/icon.css", revision: "1" },
+        { url: "/js/materialize.min.js", revision: "1" },
+        { url: "/manifest.json", revision: "1" },
+        { url: "/js/nav.js", revision: "1" },
+        { url: "/js/api.js", revision: "1" },
+        { url: "/js/standing.js", revision: "1" },
+        { url: "/js/match.js", revision: "1" },
+        { url: "/js/idb.js", revision: "1" },
+        { url: "/js/db.js", revision: "1" },
+        { url: "/favicon.ico", revision: "1" },
+        { url: "/images/icon-512.png", revision: "1" },
+        { url: "/images/Bundesliga.svg", revision: "1" },
+    ]);
+
     workbox.routing.registerRoute(
         /.*(?:png|gif|jpg|jpeg|svg|ico)$/,
         workbox.strategies.cacheFirst({
@@ -57,15 +81,15 @@ if (workbox) {
     console.log(`Workbox berhasil dimuat`);
 } else {
     self.addEventListener("push", function (event) {
-        var body;
+        let body;
         if (event.data) {
             body = event.data.text();
         } else {
             body = "Push message no payload";
         }
-        var options = {
+        const options = {
             body: body,
-            icon: "/logo.png",
+            icon: "/favicon.ico",
             vibrate: [100, 50, 100],
             data: {
                 dateOfArrival: Date.now(),
