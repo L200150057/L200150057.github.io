@@ -24,6 +24,7 @@ if (workbox) {
         { url: "/js/db.js", revision: "1" },
         { url: "/favicon.ico", revision: "1" },
         { url: "/images/icon-512.png", revision: "1" },
+        { url: "/images/maskable-icon.png", revision: "1" },
         { url: "/images/Bundesliga.svg", revision: "1" },
     ]);
 
