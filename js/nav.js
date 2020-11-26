@@ -3,7 +3,7 @@ import { getStandings } from "./standing.js";
 import { getClubs } from "./club.js";
 import { getSavedClub } from "./favorite.js";
 
-function loadNav() {
+function loadNav(page) {
     const xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4) {
@@ -75,13 +75,13 @@ function loadPage(page) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+    let page = window.location.hash.substr(1);
+    if (page == "") page = "home";
     // Activate sidebar nav
     const elems = document.querySelectorAll(".sidenav");
     M.Sidenav.init(elems);
-    loadNav();
+    loadNav(page);
 
     // Load page content
-    let page = window.location.hash.substr(1);
-    if (page == "") page = "home";
     loadPage(page);
 });
