@@ -2,7 +2,7 @@ import { matches, options } from "./api.js";
 
 const htmlData = async (data) => {
     const matches = data.matches;
-    var matchData = "";
+    let matchData = "";
     await matches.forEach((v) => {
         if (v.matchday === v.season.currentMatchday) {
             matchData += `
@@ -84,5 +84,5 @@ export const getMatches = (page) => {
         });
 };
 
-var page = window.location.hash.substr(1);
+const page = window.location.hash.substr(1);
 getMatches(page);

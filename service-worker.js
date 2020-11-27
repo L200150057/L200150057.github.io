@@ -10,7 +10,8 @@ if (workbox) {
         { url: "/pages/home.html", revision: "1" },
         { url: "/pages/standing.html", revision: "1" },
         { url: "/pages/match.html", revision: "1" },
-        { url: "/pages/contact.html", revision: "1" },
+        { url: "/pages/club.html", revision: "1" },
+        { url: "/pages/favorite.html", revision: "1" },
         { url: "/css/materialize.min.css", revision: "1" },
         { url: "/css/custom.css", revision: "1" },
         { url: "/css/icon.css", revision: "1" },
@@ -81,26 +82,26 @@ if (workbox) {
 
     console.log(`Workbox berhasil dimuat`);
 } else {
-    self.addEventListener("push", function (event) {
-        let body;
-        if (event.data) {
-            body = event.data.text();
-        } else {
-            body = "Push message no payload";
-        }
-        const options = {
-            body: body,
-            icon: "/favicon.ico",
-            vibrate: [100, 50, 100],
-            data: {
-                dateOfArrival: Date.now(),
-                primaryKey: 1,
-            },
-        };
-        event.waitUntil(
-            self.registration.showNotification("Push Notification", options)
-        );
-    });
-
     console.log(`Workbox gagal dimuat`);
 }
+
+self.addEventListener("push", function (event) {
+    let body;
+    if (event.data) {
+        body = event.data.text();
+    } else {
+        body = "Push message no payload";
+    }
+    const options = {
+        body: body,
+        icon: "/favicon.ico",
+        vibrate: [100, 50, 100],
+        data: {
+            dateOfArrival: Date.now(),
+            primaryKey: 1,
+        },
+    };
+    event.waitUntil(
+        self.registration.showNotification("Push Notification", options)
+    );
+});

@@ -1,8 +1,8 @@
-export const dbPromised = idb.open("news-reader", 1, function (upgradeDb) {
-    var articlesObjectStore = upgradeDb.createObjectStore("clubs", {
+export const dbPromised = idb.open("favorite-club", 1, function (upgradeDb) {
+    const favoriteClubStore = upgradeDb.createObjectStore("clubs", {
         keyPath: "id",
     });
-    articlesObjectStore.createIndex("name", "shortName", {
+    favoriteClubStore.createIndex("name", "shortName", {
         unique: false,
     });
 });
@@ -10,10 +10,10 @@ export const dbPromised = idb.open("news-reader", 1, function (upgradeDb) {
 export const saveForLater = (club) => {
     dbPromised
         .then(function (db) {
-            var tx = db.transaction("clubs", "readwrite");
-            var store = tx.objectStore("clubs");
+            const tx = db.transaction("clubs", "readwrite");
+            const store = tx.objectStore("clubs");
             console.log(club[0]);
-            store.add(club[0]);
+            store.put(club[0]);
             return tx.complete;
         })
         .then(function () {
@@ -25,8 +25,8 @@ export const getAll = () => {
     return new Promise(function (resolve, reject) {
         dbPromised
             .then(function (db) {
-                var tx = db.transaction("clubs", "readonly");
-                var store = tx.objectStore("clubs");
+                const tx = db.transaction("clubs", "readonly");
+                const store = tx.objectStore("clubs");
                 return store.getAll();
             })
             .then(function (articles) {
